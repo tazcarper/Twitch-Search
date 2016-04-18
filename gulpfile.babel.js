@@ -45,10 +45,19 @@ function lint(files, options) {
 const testLintOptions = {
   env: {
     mocha: true
+  },
+  rules: {
+    'camelcase': false,
+    'quotes': false,
+    'no-underscore-dangle': false,
+    'no-use-before-define':false,
+    'eol-last': false,
+    'no-unused-expressions': false,
+    'no-undef': false
   }
 };
 
-gulp.task('lint', lint('app/scripts/**/*.js'));
+gulp.task('lint', lint('app/scripts/**/*.js', testLintOptions));
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['styles', 'scripts'], () => {
