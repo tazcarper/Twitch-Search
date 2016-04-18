@@ -53,7 +53,7 @@ const testLintOptions = {
     'no-use-before-define':false,
     'eol-last': false,
     'no-unused-expressions': false,
-    'no-undef': false
+    'no-undef':false
   }
 };
 
