@@ -1,0 +1,231 @@
+// bower:
+// endbower
+
+
+
+// Twitch Colors
+$purple: #6034b1;
+$darkPurple: #472784;
+$lightPurple: #7d52cc;
+$grey: #727272;
+$blue: #0000ff;
+
+@import "_loading.scss";
+
+body {
+  background: $darkPurple;
+  overflow-x: hidden;
+}
+.container {
+  background: white;
+  border: 4px solid $purple;
+
+  &.mainContainer {
+    -webkit-box-shadow: 4px 6px 14px 0px rgba(0, 0, 0, 0.29);
+    -moz-box-shadow: 4px 6px 14px 0px rgba(0, 0, 0, 0.29);
+    box-shadow: 4px 6px 14px 0px rgba(0, 0, 0, 0.29);
+  }
+  &.purple {
+    background: $darkPurple;
+    border: none;
+
+    h1 {
+      color: white;
+    }
+  }
+}
+header {
+  padding: 35px 0;
+}
+.center-block {
+  float: none;
+}
+.searchField {
+  font-size: 18px;
+
+  #error {
+    color: red;
+    font-size: 12px;
+    margin: 10px 0 5px;
+    line-height: 1em;
+    padding: 0;
+    text-align: center;
+  }
+  .inputSpan {
+    background: $purple;
+  }
+  input {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    outline: none;
+    border: 1px solid $darkPurple;
+
+    &:focus {
+      border: 1px solid $lightPurple;
+    }
+  }
+  #searchTwitch {
+    cursor: pointer;
+    z-index: 10;
+    position: relative;
+
+    #backColor {
+      content: '';
+      background: $darkPurple;
+      width: 0%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      -webkit-transition: width .35s ease-out;
+      -moz-transition: width .35s ease-out;
+      -ms-transition: width .35s ease-out;
+      -o-transition: width .35s ease-out;
+      transition: width .35s ease-out;
+    }
+  }
+  .btn {
+    width: 100%;
+    margin: 10px 0;
+    background: $purple;
+    border-radius: 0;
+    border: none;
+    font-size: 1.15em;
+    cursor: pointer;
+    text-transform: uppercase;
+
+    &:hover, &:active &:focus {
+      background: $lightPurple;
+    }
+  }
+}
+#mainContent {
+  position: relative;
+
+  .hideThis {
+    opacity: 0;
+
+    .topBar {
+      display: none;
+    }
+  }
+}
+#content {
+  display: block;
+
+  &.hideThis {
+    display: none;
+  }
+}
+// Stream List Styles
+#streamList {
+  opacity: 1;
+  transition: opacity .25s ease-out;
+  -moz-transition: opacity .25s ease-out;
+  -webkit-transition: opacity .25s ease-out;
+
+  a {
+    color: $purple;
+
+    &:hover {
+      color: $darkPurple;
+      text-decoration: none;
+    }
+  }
+  .streamName {
+    margin-top: 0;
+    font-weight: bold;
+  }
+  .gameName {
+    font-weight: bold;
+  }
+  .viewCount {
+    font-weight: normal;
+  }
+  img {
+    width: 100%;
+    position: relative;
+    margin-bottom: 15px;
+
+    @media (max-width:480px) {
+      margin-bottom: 15px;
+    }
+  }
+  padding: 0;
+
+  li {
+    list-style: none;
+    margin: 15px 0;
+  }
+}
+#loading {
+  background: white;
+  position: absolute;
+  width: 100%;
+  height: 300px;
+  left: 0;
+  right: 0;
+  top: 0;
+  padding-top:50px;
+  margin: 0 auto;
+  opacity: 0;
+  transition: opacity .25s ease-out;
+  -moz-transition: opacity .25s ease-out;
+  -webkit-transition: opacity .25s ease-out;
+  z-index: 0;
+  display: none;
+  text-align: center;
+
+  @media (max-width:480px) {
+    top: -15px;
+  }
+  img {
+    text-align: center;
+    max-width: 100%;
+    position: relative;
+    top:-150px;
+  }
+  &.shown {
+    display: block;
+    opacity: 1;
+  }
+}
+.topBar {
+  padding: 10px 0;
+  font-size: 1.5em;
+  margin-bottom: 25px;
+}
+#pagination {
+  text-align: right;
+  opacity: 0;
+
+  &.shown {
+    opacity: 1;
+  }
+  #btn_prev, #btn_next {
+    padding: 5px;
+    color: $purple;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover {
+      text-decoration: none;
+      color: $darkPurple;
+    }
+  }
+}
+#nothingFound {
+  display: none;
+  padding: 20px 0 80px 0;
+
+  &.shown {
+    display: block;
+  }
+}
