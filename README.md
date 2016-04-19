@@ -1,6 +1,10 @@
 # Twitch-Search
 Simple Twitch Search App using vanilla JS only
 
+
+http://tazcarper.github.io/Twitch-Search/
+
+
 Author: Taz Carper
 
 ### What it does
