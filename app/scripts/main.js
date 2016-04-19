@@ -28,9 +28,10 @@ domReady(init);
 
 function init() {
 
-	// Vars
-	var current_page = 1,
-		streams_per_page = 5;
+	// Global Vars
+	var current_page = 1;
+	// setup how many streams you want showing per page
+	var	streams_per_page = 5;
 
 	// elements
 	var searchBtn = document.getElementById('searchTwitch'),
@@ -43,8 +44,13 @@ function init() {
 		errorText = document.getElementById("error"),
 		noResults = document.getElementById("nothingFound");
 
+	// Event listeners
+	searchBtn.addEventListener('touchend', clickOrTouch, false);
+	searchBtn.addEventListener('click', clickOrTouch, false);
+	searchForm.addEventListener("submit", clickOrTouch, false);
+
 	// API call to Twitch
-	var getStreams = function getStreams(url) {
+	function getStreams(url) {
 		// Offset
 		var offset = arguments.length <= 1 || arguments[1] === undefined ? 0 : arguments[1];
 
@@ -94,10 +100,7 @@ function init() {
 		});
 	};
 
-	// Event listeners
-	searchBtn.addEventListener('touchend', clickOrTouch, false);
-	searchBtn.addEventListener('click', clickOrTouch, false);
-	searchForm.addEventListener("submit", clickOrTouch, false);
+	
 
 	function clickOrTouch(e) {
 		e.preventDefault();
