@@ -31,7 +31,7 @@ function init() {
 	// Global Vars
 	var current_page = 1;
 	// setup how many streams you want showing per page
-	var	streams_per_page = 5;
+	var streams_per_page = 5;
 
 	// elements
 	var searchBtn = document.getElementById('searchTwitch'),
@@ -98,9 +98,9 @@ function init() {
 			};
 			xhrReq.send();
 		});
-	};
+	}
 
-	
+
 
 	function clickOrTouch(e) {
 		e.preventDefault();
@@ -114,10 +114,28 @@ function init() {
 			getStreams(searchField, 0, []).then(function(data) {
 				loadingBox.className = '';
 
-				// Sort by most viewers
+				// Clean up the data. I typically would use LoDash for
+				// Object / Array data sorting since it's a great library.
+				// For this type of stuff.
+
+				// Simple Sort for most viewers
 				var finalData = data.sort(function(str1, str2) {
 					return str2.viewers - str1.viewers;
 				});
+
+				// Make sure there are no duplicates.
+				function removeDuplicates(streamList) {
+					for (var i = 1; i < streamList.length; ) {
+						if (streamList[i - 1]._id === streamList[i]._id) {
+							streamList.splice(i, 1);
+						} else {
+							i++;
+						}
+					}
+					return streamList;
+				}
+
+				finalData = removeDuplicates(finalData);
 
 				if (finalData.length > 0) {
 					contentBox.classList.remove('hideThis');
