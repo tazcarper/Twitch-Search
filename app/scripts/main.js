@@ -87,7 +87,7 @@ var callbackScript = null,
 			}
 			// Create script tag to append response with data
 			callbackScript = document.createElement("script");
-			callbackScript.type = "text/javascript";
+			callbackScript.type = "application/javascript";
 			callbackScript.id = "callbackScript";
 			callbackScript.src = customUrl;
 			callbackScript.async = true;
